@@ -1,5 +1,7 @@
 <?php
 
+namespace RestaurantChain;
+
 use Interfaces\FileConvertible;
 use Company\Company;
 
