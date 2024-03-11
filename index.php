@@ -1,6 +1,5 @@
 <?php
 // コードベースのファイルのオートロード
-use Helpers\RandomGenerator;
 spl_autoload_extensions(".php"); 
 spl_autoload_register();
 
@@ -17,7 +16,7 @@ $min = (int)$min;
 $max = (int)$max;
 
 // ユーザーの生成
-$users = RandomGenerator::users($min, $max);
+$users = Helpers\RandomGenerator::users($min, $max);
 
 foreach($users as $user){
     echo $user.toString() . PHP_EOL;

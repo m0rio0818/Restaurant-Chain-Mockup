@@ -3,8 +3,9 @@
 namespace Models;
 
 use DateTime;
+use Interfaces\FileConvertible;
 
-class User
+class User implements FileConvertible
 {
     private int $id;
     private string $firstName;
@@ -40,6 +41,47 @@ class User
         $this->membershipExpirationDate = $membershipExpirationDate;
         $this->role = $role;
     }
+
+    public function getId() : string {
+        return $this->id;
+    }
+
+    public function getFirstName() : string {
+        return $this->firstName;        
+    }
+
+    public  function getLastName() : string {
+        return $this->lastName;        
+    }
+
+    public function getEmail() : string {
+        return $this->email;        
+    }
+
+    public function getPassword() : string {
+        return $this->hashedPassword;
+    }
+
+    public function getPhoneNumber() : string {
+        return $this->phoneNumber;        
+    }
+
+    public function getAddress() : string {
+        return $this->address;
+    }
+
+    public function getBirthDate() : DateTime {
+        return $this->birthDate;
+    }
+
+    public function getMembershipExpireationDate() : DateTime {
+        return $this->getMembershipExpireationDate();       
+    }
+
+    public function getRole() : string {
+        return $this->role;
+    }
+
 
     public function login(string $password): bool
     {
@@ -109,7 +151,7 @@ class User
         );
     }
 
-    public function  toMarkDown(): string
+    public function toMarkDown(): string
     {
         return "## User : {$this->firstName} {$this->lastName}
                  -Email : {$this->email}
