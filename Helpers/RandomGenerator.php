@@ -27,7 +27,7 @@ class RandomGenerator
             $faker->randomElement(['admin', 'user', 'editor']),
             $faker->randomElement(["Chef", "Cashier", "Server", "Cooking Assistance"]),
             $faker->randomFloat(),
-            $faker->dateTimeBetween(["-10 years", "now"]),
+            $faker->dateTimeBetween('-10 years', 'now'),
             array($faker->randomElement(["Great!!", "Good!", "Not bad", "Same..", "NextTime..."])),
         );
     }

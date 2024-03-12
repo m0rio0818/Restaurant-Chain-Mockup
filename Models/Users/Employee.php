@@ -29,11 +29,22 @@ class Employee extends User implements FileConvertible
         DateTime $startDate,
         array $awards
     ) {
-        parent::__construct($id, $firstName, $lastName, $email, $password, $phoneNumber, $address, $birthDate, $membershipExpirationDate, $role);
+        parent::__construct(
+            $id,
+            $firstName,
+            $lastName,
+            $email,
+            $password,
+            $phoneNumber,
+            $address,
+            $birthDate,
+            $membershipExpirationDate,
+            $role
+        );
         $this->jobTitle = $jobTitle;
-        $this->$salary = $salary;
-        $this->$startDate = $startDate;
-        $this->$awards = $awards;
+        $this->salary = $salary;
+        $this->startDate = $startDate;
+        $this->awards = $awards;
     }
 
     public function toString(): string

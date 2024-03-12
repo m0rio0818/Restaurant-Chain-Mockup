@@ -38,7 +38,13 @@ class RestaurantLocation implements FileConvertible
     public function toString(): string
     {
         return sprintf(
-            "Name: %s\nAddress: %s\nCity: %s\nState: %s\nZipCode: %s\n",
+            "
+            Name: %s\n
+            Address: %s\n
+            City: %s\n
+            State: %s\n
+            ZipCode: %s\n
+            ",
             $this->name,
             $this->address,
             $this->city,

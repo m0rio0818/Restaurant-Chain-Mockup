@@ -17,7 +17,6 @@ $min = (int)$min;
 $max = (int)$max;
 
 $resturantChains =  Helpers\RandomGenerator::generateArray("chain", 3, 5);
-
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +27,6 @@ $resturantChains =  Helpers\RandomGenerator::generateArray("chain", 3, 5);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profiles</title>
     <style>
-        /* ユーザーカードのスタイル */
     </style>
 </head>
 
