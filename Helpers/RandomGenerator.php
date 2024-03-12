@@ -2,11 +2,11 @@
 
 namespace Helpers;
 
-use Person\Employee;
+use Models\Users\Employee;
 use Faker\Factory;
-use Models\User;
-use RestaurantChain\RestaurantChain;
-use RestaurantLocation\RestaurantLocation;
+use Models\Users;
+use Models\Companies\RestaurantChains\RestaurantChain;
+use Models\RestaurantLocations\RestaurantLocation;
 
 class RandomGenerator
 {
@@ -40,6 +40,7 @@ class RandomGenerator
         return new RestaurantChain(
             $faker->name(),
             $faker->year(),
+            $faker->text(100),
             $faker->url(),
             $faker->phoneNumber(),
             $faker->randomElement(["IT", "Loyal", "Economic", "Consulting"]),
@@ -67,7 +68,7 @@ class RandomGenerator
             $faker->city(),
             $faker->state(),
             $faker->postcode(),
-            self::generateArray("location", 2, 10),
+            self::generateArray("employee", 2, 10),
             $faker->boolean(),
             $faker->boolean()
         );
@@ -97,6 +98,7 @@ class RandomGenerator
         $faker = Factory::create();
         $arrays = [];
         $numOfArray = $faker->numberBetween($min, $max);
+        echo $numOfArray . PHP_EOL;
 
         for ($i = 0; $i < $numOfArray; $i++) {
             if ($type == "user")  $arrays[] = self::user();

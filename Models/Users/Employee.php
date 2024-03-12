@@ -1,10 +1,10 @@
 <?php
 
-namespace Models;
+namespace Models\Users;
 
 use DateTime;
 use Interfaces\FileConvertible;
-use Models\User;
+use Models\Users\User;
 
 class Employee extends User implements FileConvertible
 {
@@ -39,7 +39,19 @@ class Employee extends User implements FileConvertible
     public function toString(): string
     {
         return sprintf(
-            "User ID: %d \nName : %s %s\nEmail: %s\nAddress: %s\nBirthDate: %s\nMemberShip Expiration Date: %s\nRole: %s\nJobTitle: %s\nSalary: %s\nStartDate : %s\nAward: %s\n",
+            "
+            User ID: %d \n
+            Name : %s %s\n
+            Email: %s\n
+            Address: %s\n
+            BirthDate: %s\n
+            MemberShip Expiration Date: %s\n
+            Role: %s\n
+            JobTitle: %s\n
+            Salary: %s\n
+            StartDate : %s\n
+            Award: %s\n
+            ",
             $this->getId(),
             $this->getFirstName(),
             $this->getLastName(),
@@ -60,9 +72,8 @@ class Employee extends User implements FileConvertible
             "
             <div class='user-card'>
                 <div class='avater'>SAMPLE</div>
+                <p>%d</p>
                 <h2>%s %s</h2>
-                <p>%s</p>
-                <p>%s</p>
                 <p>%s</p>
                 <p>BirthDate : %s</p>
                 <p>MemberShip Expireation Date: %s</p>

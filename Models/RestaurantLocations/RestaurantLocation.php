@@ -1,6 +1,6 @@
 <?php
 
-namespace RestaurantLocation;
+namespace Models\RestaurantLocations;
 
 use Interfaces\FileConvertible;
 

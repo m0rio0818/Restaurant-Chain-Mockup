@@ -1,6 +1,6 @@
 <?php
 
-namespace Company;
+namespace Models\Companies;
 
 use Interfaces\FileConvertible;
 
@@ -21,6 +21,7 @@ class Company implements FileConvertible
     public function __construct(
         string $name,
         int $foundingYear,
+        string $description,
         string $website,
         string $phone,
         string $industry,
@@ -32,6 +33,7 @@ class Company implements FileConvertible
     ) {
         $this->name = $name;
         $this->foundingYear = $foundingYear;
+        $this->description = $description;
         $this->website = $website;
         $this->phone = $phone;
         $this->industry = $industry;
@@ -42,51 +44,71 @@ class Company implements FileConvertible
         $this->totalEmployees = $totalEmployees;
     }
 
-    public function getName() : string {
-        return $this->name;        
+    public function getName(): string
+    {
+        return $this->name;
     }
 
-    public function getFoundingYear() : int {
-        return $this->foundingYear;        
+    public function getFoundingYear(): int
+    {
+        return $this->foundingYear;
     }
 
-    public function getDescription() : string {
-        return $this->description;        
+    public function getDescription(): string
+    {
+        return $this->description;
     }
 
-    public function getWebsite() : string {
+    public function getWebsite(): string
+    {
         return $this->website;
     }
 
-    public function getPhone() :string {
+    public function getPhone(): string
+    {
         return $this->phone;
     }
 
-    public function getIndustry() : string {
-        return $this->industry;        
+    public function getIndustry(): string
+    {
+        return $this->industry;
     }
 
-    public function getCeo() : string {
+    public function getCeo(): string
+    {
         return $this->ceo;
     }
 
-    public function getCountry() : string {
-        return $this->country;        
+    public function getCountry(): string
+    {
+        return $this->country;
     }
 
-    public function getFounder() : string {
+    public function getFounder(): string
+    {
         return $this->founder;
     }
 
-    public function getTotalEmployee() : int {
-        return $this->totalEmployees;        
+    public function getTotalEmployee(): int
+    {
+        return $this->totalEmployees;
     }
 
 
     public function toString(): string
     {
         return sprintf(
-            "Name: %s\nFounding Year: %s\nDescription: %s\nWebsite: %s\nPhone: %s\nIndustry: %s\nCEO: %s\nCountry: %s\nFounder: %s\nTotalEmployees Num: %s",
+            "
+            Name: %s\n
+            Founding Year: %d\n
+            Description: %s\n
+            Website: %s\n
+            Phone: %s\n
+            Industry: %s\n
+            CEO: %s\n
+            Country: %s\n
+            Founder: %s\n
+            TotalEmployees Num: %s",
             $this->name,
             $this->foundingYear,
             $this->description,

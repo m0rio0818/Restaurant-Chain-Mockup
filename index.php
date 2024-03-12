@@ -1,7 +1,8 @@
 <?php
 // コードベースのファイルのオートロード
-spl_autoload_extensions(".php"); 
+spl_autoload_extensions(".php");
 spl_autoload_register();
+
 
 // composerの依存関係のオートロード
 require_once 'vendor/autoload.php';
@@ -9,22 +10,19 @@ require_once 'vendor/autoload.php';
 
 // クエリ文字列からパラメータを取得
 $min = $_GET['min'] ?? 5;
-$max = $_GET['max'] ?? 20;
+$max = $_GET['max'] ?? 10;
 
 // パラメータが整数であることを確認
 $min = (int)$min;
 $max = (int)$max;
 
-// ユーザーの生成
-$users = Helpers\RandomGenerator::users($min, $max);
+$resturantChains =  Helpers\RandomGenerator::generateArray("chain", 3, 5);
 
-foreach($users as $user){
-    echo $user.toString() . PHP_EOL;
-}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,13 +31,12 @@ foreach($users as $user){
         /* ユーザーカードのスタイル */
     </style>
 </head>
+
 <body>
-    <h1>User Profiles</h1>
-
-    <?php foreach ($users as $user): ?>
-    <div class="user-card">
-    </div>
+    <?php foreach ($resturantChains as $restrantChain):?>
+        <div>
+            <?php $restrantChain->toHTML() ?>
+        </div>
     <?php endforeach; ?>
-
 </body>
 </html>

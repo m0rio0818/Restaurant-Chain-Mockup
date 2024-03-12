@@ -1,9 +1,9 @@
 <?php
 
-namespace RestaurantChain;
+namespace Models\Companies\RestaurantChains;
 
 use Interfaces\FileConvertible;
-use Company\Company;
+use Models\Companies\Company;
 
 class RestaurantChain extends Company implements FileConvertible
 {
@@ -17,6 +17,7 @@ class RestaurantChain extends Company implements FileConvertible
     public function __construct(
         string $name,
         int $foundingYear,
+        string $description,
         string $website,
         string $phone,
         string $industry,
@@ -31,7 +32,19 @@ class RestaurantChain extends Company implements FileConvertible
         int $numberOfLocations,
         string $parentCompany
     ) {
-        parent::__construct($name, $foundingYear, $website, $phone, $industry, $ceo, $isPubliclyTraded, $country, $founder, $totalEmployees);
+        parent::__construct(
+            $name,
+            $foundingYear,
+            $description,
+            $website,
+            $phone,
+            $industry,
+            $ceo,
+            $isPubliclyTraded,
+            $country,
+            $founder,
+            $totalEmployees
+        );
         $this->chainId = $chainId;
         $this->restaurantLocations = $restaurantLocations;
         $this->cuisineType = $cuisineType;
@@ -42,7 +55,17 @@ class RestaurantChain extends Company implements FileConvertible
     public function toString(): string
     {
         return sprintf(
-            "Name: %s\nFounding Year: %s\nDescription: %s\nWebsite: %s\nPhone: %s\nIndustry: %s\nCEO: %s\nCountry: %s\nFounder: %s\nTotalEmployees Num: %s",
+            "
+            Name: %s\n
+            Founding Year: %d\n
+            Description: %s\n
+            Website: %s\n
+            Phone: %s\n
+            Industry: %s\n
+            CEO: %s\nCountry: %s\n
+            Founder: %s\n
+            TotalEmployees Num: %d\n
+            ",
             $this->getName(),
             $this->getFoundingYear(),
             $this->getDescription(),
@@ -62,7 +85,7 @@ class RestaurantChain extends Company implements FileConvertible
             <div class='user-card'>
                 <div class='avater'>SAMPLE</div>
                 <h2>%s</h2>
-                <p>FoundYear: %s</p>
+                <p>FoundYear: %d</p>
                 <p>Descripiton: %s</p>
                 <p>URL: %s</p>
                 <p>Phone: %s</p>
@@ -70,8 +93,9 @@ class RestaurantChain extends Company implements FileConvertible
                 <p>CEO: %s</p>
                 <p>Country : %s</p>
                 <p>Founder : %s</p>
-                <p>Total Num : %s</p>
-            </div>",
+                <p>Total Num : %d</p>
+            </div>
+            ",
             $this->getName(),
             $this->getFoundingYear(),
             $this->getDescription(),
