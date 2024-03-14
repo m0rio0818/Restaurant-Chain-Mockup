@@ -81,30 +81,18 @@ class Employee extends User implements FileConvertible
     {
         return sprintf(
             "
-            <div class='user-card'>
-                <div class='avater'>SAMPLE</div>
-                <p>%d</p>
-                <h2>%s %s</h2>
-                <p>%s</p>
-                </div>",
+            <tr>
+                <td>%d</td>
+                <td>%s %s</td>
+                <td>%s</td>
+                <td>%d</td>
+            </tr>
+            ",
             $this->getId(),
             $this->getFirstName(),
             $this->getLastName(),
-            $this->getAddress(),
-            //     <p>BirthDate : %s</p>
-            //     <p>MemberShip Expireation Date: %s</p>
-            //     <p>Role : %s</p>
-            //     <p>Job Title : %s</p>
-            //     <p>Salary : %s</p>
-            //     <p>startDate : %s</p>
-            //     <p>Awards : %s</p>
-            //     $this->getBirthDate()->format("Y-m-d"),
-            // $this->getMembershipExpireationDate()->format("Y-m-d"),
-            // $this->getRole(),
-            // $this->jobTitle,
-            // $this->salary,
-            // $this->startDate,
-            // $this->awards,
+            $this->jobTitle,
+            $this->startDate->format('Y-m-d'),
         );
     }
 

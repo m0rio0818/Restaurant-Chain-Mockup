@@ -65,6 +65,8 @@ class RestaurantLocation implements FileConvertible
         $parent = "accordion_" . $this->locationId . "_parent";
         $collapse = "accordion_" . $this->locationId . "_collapse";
 
+        $address = $this->zipCode . " " . $this->state . " " . $this->city . " " . $this->address;
+
         return sprintf(
             "
             <div class='accordion' id='$parent' >
@@ -77,12 +79,30 @@ class RestaurantLocation implements FileConvertible
                 </div>
                 <div id='$collapse' class='accordion-collapse collapse' data-bs-parent='#$parent'>
                 <div class='accordion-body'>
-                    hello world
+                    <p>Name: %s</p>
+                    <p>Address: %s</p>
+                    <p>Employees: </p>
+                    <table class='table'>
+                    <thead>
+                        <tr>
+                        <th scope='col'>ID</th>
+                        <th scope='col'>Name</th>
+                        <th scope='col'>Job</th>
+                        <th scope='col'>Join Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        %s
+                    </tbody>
+                    </table>
                 </div>
                 </div>
             </div>
             ",
-            $this->name
+            $this->name,
+            $this->name,
+            $address,
+            $emoloyeeLists
         );
     }
 
