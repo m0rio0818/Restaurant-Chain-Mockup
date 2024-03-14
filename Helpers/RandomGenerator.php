@@ -70,39 +70,20 @@ class RandomGenerator
             $faker->postcode(),
             self::generateArray("employee", 2, 10),
             $faker->boolean(),
-            $faker->boolean()
+            $faker->boolean(),
+            $faker->randomNumber()
         );
     }
 
-
-    public static function user(): User
-    {
-        $faker = Factory::create();
-
-        return new User(
-            $faker->randomNumber(),
-            $faker->firstName(),
-            $faker->lastName(),
-            $faker->email(),
-            $faker->password(),
-            $faker->phoneNumber(),
-            $faker->address(),
-            $faker->dateTimeThisCentury(),
-            $faker->dateTimeBetween('-10 years', '+20 years'),
-            $faker->randomElement(["admin", "user", "editor"])
-        );
-    }
 
     public static function generateArray(string $type, int $min = 2, int $max = 10): array
     {
         $faker = Factory::create();
         $arrays = [];
         $numOfArray = $faker->numberBetween($min, $max);
-        echo $numOfArray . PHP_EOL;
 
         for ($i = 0; $i < $numOfArray; $i++) {
-            if ($type == "user")  $arrays[] = self::user();
-            elseif ($type == "employee") $arrays[] = self::employee();
+            if ($type == "employee") $arrays[] = self::employee();
             elseif ($type == "location") $arrays[] = self::restaurantLocation();
             elseif ($type == "chain") $arrays[] = self::restaurantChain();
         }

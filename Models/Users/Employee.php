@@ -86,25 +86,25 @@ class Employee extends User implements FileConvertible
                 <p>%d</p>
                 <h2>%s %s</h2>
                 <p>%s</p>
-                <p>BirthDate : %s</p>
-                <p>MemberShip Expireation Date: %s</p>
-                <p>Role : %s</p>
-                <p>Job Title : %s</p>
-                <p>Salary : %s</p>
-                <p>startDate : %s</p>
-                <p>Awards : %s</p>
-            </div>",
+                </div>",
             $this->getId(),
             $this->getFirstName(),
             $this->getLastName(),
             $this->getAddress(),
-            $this->getBirthDate()->format("Y-m-d"),
-            $this->getMembershipExpireationDate()->format("Y-m-d"),
-            $this->getRole(),
-            $this->jobTitle,
-            $this->salary,
-            $this->startDate,
-            $this->awards,
+            //     <p>BirthDate : %s</p>
+            //     <p>MemberShip Expireation Date: %s</p>
+            //     <p>Role : %s</p>
+            //     <p>Job Title : %s</p>
+            //     <p>Salary : %s</p>
+            //     <p>startDate : %s</p>
+            //     <p>Awards : %s</p>
+            //     $this->getBirthDate()->format("Y-m-d"),
+            // $this->getMembershipExpireationDate()->format("Y-m-d"),
+            // $this->getRole(),
+            // $this->jobTitle,
+            // $this->salary,
+            // $this->startDate,
+            // $this->awards,
         );
     }
 

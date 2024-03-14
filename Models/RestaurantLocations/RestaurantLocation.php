@@ -14,6 +14,7 @@ class RestaurantLocation implements FileConvertible
     private array $employees;
     private bool $isOpen;
     private bool $hasDriveThru;
+    private int $locationId;
 
     public function __construct(
         string $name,
@@ -23,7 +24,8 @@ class RestaurantLocation implements FileConvertible
         string $zipCode,
         array $employees,
         bool $isOpen,
-        bool $hasDriveThru
+        bool $hasDriveThru,
+        int $locationId
     ) {
         $this->name  = $name;
         $this->address = $address;
@@ -33,6 +35,7 @@ class RestaurantLocation implements FileConvertible
         $this->employees = $employees;
         $this->isOpen = $isOpen;
         $this->hasDriveThru = $hasDriveThru;
+        $this->locationId = $locationId;
     }
 
     public function toString(): string
@@ -54,21 +57,32 @@ class RestaurantLocation implements FileConvertible
     }
     public function toHTML(): string
     {
+        $emoloyeeLists = "";
+        foreach ($this->employees as $employee) {
+            $emoloyeeLists .= $employee->toHTML();
+        }
+
+        $parent = "accordion_" . $this->locationId . "_parent";
+        $collapse = "accordion_" . $this->locationId . "_collapse";
+
         return sprintf(
             "
-            <div class='user-card'>
-                <div class='avater'>SAMPLE</div>
-                <h2>%s</h2>
-                <p>Address: %s</p>
-                <p>ZipCode: %s</p>
-                <p>State: %s</p>
-                <p>City: %s</p>
-            </div>",
-            $this->name,
-            $this->address,
-            $this->zipCode,
-            $this->state,
-            $this->city,
+            <div class='accordion' id='$parent' >
+                <div class='accordion-item'>
+                    <h2 class='accordion-header'>
+                        <button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#$collapse' aria-expanded='false' aria-controls='$collapse'>
+                            %s
+                        </button>
+                    </h2>
+                </div>
+                <div id='$collapse' class='accordion-collapse collapse' data-bs-parent='#$parent'>
+                <div class='accordion-body'>
+                    hello world
+                </div>
+                </div>
+            </div>
+            ",
+            $this->name
         );
     }
 

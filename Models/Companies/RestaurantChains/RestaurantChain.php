@@ -80,32 +80,22 @@ class RestaurantChain extends Company implements FileConvertible
     }
     public function toHTML(): string
     {
+        $locationsLists = "";
+        foreach ($this->restaurantLocations as $location) {
+            $locationsLists .=  $location->toHTML();
+        }
+
+
+
         return sprintf(
             "
-            <div class='user-card'>
-                <div class='avater'>SAMPLE</div>
-                <h2>%s</h2>
-                <p>FoundYear: %d</p>
-                <p>Descripiton: %s</p>
-                <p>URL: %s</p>
-                <p>Phone: %s</p>
-                <p>Industry : %s</p>
-                <p>CEO: %s</p>
-                <p>Country : %s</p>
-                <p>Founder : %s</p>
-                <p>Total Num : %d</p>
+            <div class='card p-3 my-3'>
+                <h3 class='text-center py-3'>Restaurant Chain : %s</h3>
+                %s
             </div>
             ",
             $this->getName(),
-            $this->getFoundingYear(),
-            $this->getDescription(),
-            $this->getWebsite(),
-            $this->getPhone(),
-            $this->getIndustry(),
-            $this->getCeo(),
-            $this->getCountry(),
-            $this->getFounder(),
-            $this->getTotalEmployee()
+            $locationsLists,
         );
     }
 
